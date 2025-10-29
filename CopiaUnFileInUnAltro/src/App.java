@@ -3,7 +3,35 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class App {
+
+    public void copyFile( String fileIn, String fileOut ) {
+        File f = new File(fileIn);
+        Scanner leggiFile = new Scanner(f);
+        FileWriter scriviFile = new FileWriter(fileOut);
+        // legge riga per riga e le scrive in output
+        while (leggiFile.hasNextLine()) {
+            String s = leggi.nextLine();
+            scriviFile.write(s);
+        }
+        leggiFile.close();
+        scriviFile.close();
+    }
+
+
     public static void main(String[] args) throws Exception {
+
+        // chiede i nomi dei file all'utente
+        Scanner leggiDaTastiera = new Scanner(System.in);
+        System.out.print("Nome del file di input: ");
+        String inputFilename = leggiDleggiDaTastiera.nextLine();
+        System.out.print("Nome del file di output: ");
+        String outputFilename = leggiDleggiDaTastiera.nextLine();
+        leggiDaTastiera.close();
+
+        // copia input in output
+        copyFile( inputFilename, outputFilename);
+
+
 
         // prima scrivo dentro un file
         /*
@@ -15,13 +43,5 @@ public class App {
         System.out.println("Ok, ho scritto sul file!");
         */
 
-        // ora leggo cosa c'è nel file
-        File f = new File("filename.txt");
-        Scanner leggi = new Scanner(f);
-        while (leggi.hasNextLine()) {
-            String s = leggi.nextLine();
-            System.out.println(s);
-        }
-        leggi.close();
     }
 }
