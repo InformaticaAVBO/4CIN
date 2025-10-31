@@ -1,20 +1,21 @@
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
 
-    public void copyFile( String fileIn, String fileOut ) {
+    public static void copyFile( String fileIn, String fileOut ) throws IOException {
         File f = new File(fileIn);
-        Scanner leggiFile = new Scanner(f);
-        FileWriter scriviFile = new FileWriter(fileOut);
+        Scanner leggi = new Scanner(f);
+        FileWriter scrivi = new FileWriter(fileOut);
         // legge riga per riga e le scrive in output
-        while (leggiFile.hasNextLine()) {
+        while (leggi.hasNextLine()) {
             String s = leggi.nextLine();
-            scriviFile.write(s);
+            scrivi.write(s);
         }
-        leggiFile.close();
-        scriviFile.close();
+        leggi.close();
+        scrivi.close();
     }
 
 
@@ -23,25 +24,13 @@ public class App {
         // chiede i nomi dei file all'utente
         Scanner leggiDaTastiera = new Scanner(System.in);
         System.out.print("Nome del file di input: ");
-        String inputFilename = leggiDleggiDaTastiera.nextLine();
+        String inputFilename = leggiDaTastiera.nextLine();
         System.out.print("Nome del file di output: ");
-        String outputFilename = leggiDleggiDaTastiera.nextLine();
+        String outputFilename = leggiDaTastiera.nextLine();
         leggiDaTastiera.close();
 
         // copia input in output
-        copyFile( inputFilename, outputFilename);
-
-
-
-        // prima scrivo dentro un file
-        /*
-        FileWriter myWriter = new FileWriter("filename.txt");
-        for (int i=0; i<100; i++) {
-            myWriter.write("Questa è una prima frase scritta in un file\n");
-        }
-        myWriter.close();
-        System.out.println("Ok, ho scritto sul file!");
-        */
+        App.copyFile( inputFilename, outputFilename);
 
     }
 }
