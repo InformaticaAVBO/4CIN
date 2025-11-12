@@ -9,8 +9,8 @@ public class App {
         System.out.println(x.get(3));
         System.out.println(x.get(3).getClass());
 
-        Vettore<Persona> elenco = new Vettore<Persona>();
-        
+        Vettore<Persona> elenco = new Vettore<Persona>(10, 5);
+
         
     }
 }
