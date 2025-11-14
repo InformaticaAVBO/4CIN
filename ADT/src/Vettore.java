@@ -3,6 +3,11 @@ public class Vettore<T> {
 
     T[] v;
     int n, start, delta;
+    String separator;
+
+    public Vettore() {
+        this(10,5);
+    }
 
     @SuppressWarnings("unchecked")
     public Vettore( int start, int delta ) {
@@ -12,14 +17,16 @@ public class Vettore<T> {
         this.start = start;
         this.delta = delta;
         n = 0;
+        separator = "\n";
     }
 
+    // @SuppressWarnings("unchecked")
     @SuppressWarnings("unchecked")
     public void add( T s ) {
         if (v.length==n) {
-            T[] v2 = (T[]) new Object[v.length + delta];
-            for (int i=0; i<n; i++) v2[i]=v[i];
-            v = v2;
+            T[] nuovo_v = (T[]) new Object[v.length + delta];
+            for (int i=0; i<n; i++) nuovo_v[i]=v[i];
+            v = nuovo_v;
         }
         v[n++] = s;
     }
@@ -29,10 +36,14 @@ public class Vettore<T> {
         return v[i];
     }
 
+    public void setSeparator( String sep ) {
+        this.separator = sep;
+    }
+
+    @Override
     public String toString() {
-        String s = "Sono dimensionato a " + v.length + ", ma contengo " + n + " valori, che sono questi:\n";
-        for (int i=0; i<n; i++)
-            s += v[i] + "\t";
+        String s = "Sono un Vettore grande " + v.length + ", di cui " + n + " elementi occupati:\n";
+        for (int i=0; i<n; i++) s += v[i] + separator;
         return s;
     }
 
